@@ -55,9 +55,33 @@ describe('findByIdAndUpdate',function(){
     );
   });
   it('should find by id and update',function(){
-    return List.findByIdAndUpdate(this.updateMe._id,{ name: 'updated' })
+    return List.findByIdAndUpdate(this.updateMe._id,{ name: 'updated' },{ new: true })
       .then(updatedNote => {
         expect(updatedNote.name).to.equal('updated');
       });
+  });
+});
+
+describe.only('findByIdAndAddNote',function(){
+  before(function(){
+    return (
+      new List({
+        name: 'notes'
+      }).save()
+        .then(saved => this.testList = saved)
+    );
+  });
+  it('should add a note to the list',function(){
+    return List.findByIdAndAddNote(
+      this.testList._id,
+      { title: 'new note'}
+    ).then(note => {
+      expect(note.title).to.equal('new note');
+      expect(note.listID.toString()).to.equal(this.testList._id.toString());
+
+      return List.findById(this.testList._id)
+        .then()
+    })
+
   });
 });

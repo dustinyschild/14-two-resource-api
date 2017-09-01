@@ -8,7 +8,7 @@ const List = require('../model/list');
 const router = module.exports = new Router();
 
 router.post('/api/list',jsonParser,function(){
-
+  
 })
 
 //router.get()

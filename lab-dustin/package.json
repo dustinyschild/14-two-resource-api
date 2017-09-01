@@ -6,7 +6,8 @@
   "scripts": {
     "test": "cross-env DEBUG=app:* mocha",
     "start": "cross-env DEBUG=app:* nodemon server.js",
-    "test:watch": "cross-env DEBUG=app:* mocha -w"
+    "test:watch": "cross-env DEBUG=app:* mocha -w",
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "chai": "^4.1.1",
     "cross-env": "^5.0.5",
+    "eslint": "^4.5.0",
     "mocha": "^3.5.0",
     "nodemon": "^1.11.0",
     "supertest": "^3.0.0"
